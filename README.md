@@ -5,21 +5,22 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
+<div align="center">
+
+
+<br>
+<br>
+<br>
+
+![tokeman](./assets/tokeman.png)
+
 <!-- PROJECT SHIELDS/BADGES -->
-[![Workflow][workflow-shield]][workflow-url]
 [![Issues][issues-shield]][issues-url]
 [![Version][version-shield]][version-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Twitter][twitter-shield]][twitter-url]
-
-
 
 <!-- PROJECT LOGO & TITLE -->
 <br>
 <div align="center">
-  <a href="https://github.com/jay-bulk">
-    <img src="public/assets/img.png" alt="Logo" width="73" height="70">
-  </a><br><br>
   <div align="center"><h1>ts_tokeman</h1>A token manager written in TypeScript</div>
   <div align="right">
     <br>
@@ -36,7 +37,8 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details open="open" style="padding:4px;display:inline;border-width:1px;border-style:solid;">
+<div align="left">
+<details align="left" open="open" style="padding:4px;display:inline;border-width:1px;border-style:solid;">
   <summary><b style="display: inline-block"><u>Contents</u></b></summary>
     <ol>
         <li>
@@ -64,6 +66,7 @@
         <li><a href="#contact">Contact</a></li>
     </ol>
 </details><hr><br>
+<div/>
 
 
 
@@ -160,20 +163,22 @@ Contributions are welcomed and, of course, **greatly appreciated**.
 
 * [Issues][issues-url]
 <!---* [Personal Website.](https://jay-bulk.github.io/)-->
-* [Twitter](https://twitter/jay_bulk)
+* [twitter-url](https://twitter/jay_bulk)
 
 <br>
 
 <!-- SPECIFIC URLS - NEED CHANGING PER PROJECT -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+</div>
+</div>
 
-[//]: # ([workflow-shield]: https://github.com/jay-bulk/ts-tokeman/actions/workflows/codeql-analysis.yml/badge.svg)
+[workflow-shield]: https://github.com/jay-bulk/ts-tokeman/actions/workflows/codeql-analysis.yml/badge.svg
 
-[//]: # ([workflow-url]: https://github.com/jay-bulk/ts-tokeman/actions)
-[//]: # ([version-shield]: https://img.shields.io/github/v/release/jay-bulk/ts-tokeman)
+[workflow-url]: https://github.com/jay-bulk/ts-tokeman/actions
+[version-shield]: https://img.shields.io/github/v/release/jay-bulk/ts-tokeman
 
-[//]: # ([version-url]: https://github.com/jay-bulk/ts-tokeman/releases/)
+[version-url]: https://github.com/jay-bulk/ts-tokeman/releases/
 
-[//]: # ([issues-shield]: https://img.shields.io/github/issues/jay-bulk/ts-tokeman.svg)
+[issues-shield]: https://img.shields.io/github/issues/jay-bulk/ts-tokeman.svg
 
 [issues-url]: https://github.com/jay-bulk/ts-tokeman/issues
