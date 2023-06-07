@@ -1,4 +1,7 @@
 import { config } from './config'
+import { getVersion } from './util'
+import { Command, Flags } from '@oclif/core'
+
 //TODO: v0
 //TODO: add config for the token endpoint and a generic endpoint for whichever jwt echo endpoint can call and return the jwt
 //TODO: use fetch to make requests to the byu token service
@@ -10,3 +13,41 @@ import { config } from './config'
 //TODO: v2
 //TODO: add functionality for auth code validation?
 //TODO: I don't know
+
+
+/**
+ *  return the arguments of the command except node and index.ts
+ */
+const getFlags = () => {
+    const flags = process.argv.slice(2)
+    return flags
+}
+
+/**
+ * Command Help
+ */
+function printCommandHelp(): void {
+    const version: string = getVersion
+    const help = `
+ts-tokeman (version: ${version})
+
+A simple command to retrieve stock information.
+
+Example:
+
+$ tokeman -p filename.json
+token: Uj01.-3118j9jfas...
+jwt: eykjJKkj12j198ja...
+jwt expires in [60] minutes
+`
+    console.log(help)
+}
+
+const symbols = getFlags()
+
+// Print help if no arguments
+if (symbols.length === 0) {
+    printCommandHelp()
+    getVersion()
+    process.exit(0)
+}

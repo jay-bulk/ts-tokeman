@@ -1,3 +1,9 @@
+# tokeman configs
+tokeman.json
+config.json
+tk.yml
+toke.yml
+
 # Logs
 logs
 *.log
