@@ -1,10 +1,8 @@
 import fs from "fs"
 import path from "path"
-import
 
 module.exports = {
     getVersion,
-    getToken,
     getJwt,
     getId,
     getClaims,
@@ -18,8 +16,4 @@ function getVersion(): string {
     const content = fs.readFileSync(packageJSONPath, { encoding: "utf8" })
     const config = JSON.parse(content)
     return config.version
-}
-
-function getToken(): Object {
-
 }
