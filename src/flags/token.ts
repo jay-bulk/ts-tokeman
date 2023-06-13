@@ -1,4 +1,6 @@
 import { Args, Command, Flags } from '@clif/core'
+import { getToken } from '../util'
+import { getEnv } from '../util/env'
 
 export default class Token extends Command {
     static description = `
@@ -18,7 +20,7 @@ export default class Token extends Command {
     }
 
     async run(args, flags): Promise<void> {
-        const token = await getToken()
+        const token = await getToken('id', 'secret')
         this.log(`${token}`)
     }
 
