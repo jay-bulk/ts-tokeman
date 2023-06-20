@@ -1,18 +1,17 @@
-import { Environment, getEnv } from './env'
-
-
-const { issuer_url } = getEnv();
-
+import { setEnv } from './util'
+import fetch from 'node-fetch'
 //May need to switch to fastify server is fetch cannot handle specifying data
-async function getToken(tokenid, tokensecret): Promise<Response> {
+const env = setEnv()
 
-    const response: Response = await fetch(issuer_url, {
+async function getToken(token: string, tokensecret: string) {
+
+    const response = await fetch(env.issuer_url, {
         method: "POST",
+        body: `grant_type=client_credentials&client_id=${token}&client_secret=${tokensecret}`,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            "host":`${issuer_url}`
+            "host":`${env.issuer_url}`
         },
-        body: `grant_type=client_credentials&client_id=${tokenid}&client_secret=${tokensecret}`,
     })
     console.log(response)
 

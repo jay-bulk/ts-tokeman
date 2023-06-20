@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "npm run clean && tsc",
-    "clean": "npm rimraf dist",
+    "clean": "rimraf dist",
     "lint": "eslint .",
     "dev": "node -r ts-node/register -r dotenv/config src/index.ts",
     "test": "ava"
@@ -30,7 +30,8 @@
     "eslint": "^8.35.0",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "lint-staged": "^13.1.2",
-    "rimraf": "^4.2.0",
+    "node-fetch": "^3.3.1",
+    "rimraf": "^4.4.1",
     "snazzy": "^9.0.0",
     "standard": "^17.0.0",
     "ts-node": "^10.9.1",
