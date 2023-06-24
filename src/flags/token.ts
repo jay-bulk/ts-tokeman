@@ -1,6 +1,6 @@
 import { Args, Command, Flags } from '@clif/core'
-import { getToken } from '../util'
-import { getEnv } from '../util/env'
+import { setEnv } from '../util'
+import getToken from '../util/token'
 
 export default class Token extends Command {
     static description = `
@@ -16,10 +16,12 @@ export default class Token extends Command {
     }
 
     static args = {
-        client_id: Args.string({description: ''})
+        client_id: Args.string({description: 'client id you would like to generate a token for'})
     }
 
     async run(args, flags): Promise<void> {
+        this.args = args;
+        this.flags = flags;
         const token = await getToken('id', 'secret')
         this.log(`${token}`)
     }

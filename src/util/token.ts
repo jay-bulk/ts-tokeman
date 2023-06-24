@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 //May need to switch to fastify server is fetch cannot handle specifying data
 const env = setEnv()
 
-async function getToken(token: string, tokensecret: string) {
+export default async function getToken(token: string, tokensecret: string) {
 
     const response = await fetch(env.issuer_url, {
         method: "POST",
@@ -17,5 +17,4 @@ async function getToken(token: string, tokensecret: string) {
 
     return response
 }
-
 
