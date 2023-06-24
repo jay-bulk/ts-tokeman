@@ -2,6 +2,7 @@
 import { getVersion } from './util'
 import { Command, Flags } from '@oclif/core'
 
+
 // TODO: v0
 // TODO: add config for the token endpoint and a generic endpoint for whichever jwt echo endpoint can call and return the jwt
 // TODO: use fetch to make requests to the byu token service
