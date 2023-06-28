@@ -93,13 +93,6 @@ For help or guidance in downloading and running the application, see the followi
 
 #### Installation
 1. Clone/Download:
-  ```sh
-  git clone https://github.com/jay-bulk/ts-tokeman.git
-  ```
-or
-```shell
-gh repo clone jay-bulk/ts-tokeman
-```
 2. Install:
   ```sh
 cd ts-tokeman/
