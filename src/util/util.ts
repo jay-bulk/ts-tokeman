@@ -5,9 +5,7 @@ import { Environment } from './env'
 // module.exports = {
 // getVersion,
 // getJwt,
-// getId,
 // getClaims,
-// setId,
 // setSecret,
 // setIdSecret,
 // setConfig
@@ -22,7 +20,9 @@ export function getVersion () {
 export function setEnv () {
   const env = new Environment()
   // eslint-disable-next-line camelcase
-  const { issuer_url, gateway_url, config_dir } = env.getEnv()
+  const { issuer_url, gateway_url, config_dir, echo_url } = env.getEnv()
   // eslint-disable-next-line camelcase
-  return { issuer_url, gateway_url, config_dir }
+  return { issuer_url, gateway_url, config_dir, echo_url }
 }
+
+export

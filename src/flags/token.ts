@@ -22,7 +22,7 @@ export default class Token extends Command {
     async run(args, flags): Promise<void> {
         this.args = args;
         this.flags = flags;
-        const token = await getToken('id', 'secret')
+        const token = await getToken('id')
         this.log(`${token}`)
     }
 
