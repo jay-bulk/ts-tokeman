@@ -4,14 +4,17 @@ import path from "path";
 import fs from "fs";
 import {Client} from './Client'
 import {ParserTypes} from "types";
+import getJWT from "./jwt";
+import {TokenResponse} from "./Response";
 
 //May need to switch to fastify server if fetch cannot handle specifying data
 const env = setEnv()
 
-function getClient(clientName: string): Client {
+function getClient(clientName: string | number | ParserTypes[] | boolean): Client {
     const packageJSONPath = path.resolve(__dirname, '/tokeman.json')
     const content = fs.readFileSync(packageJSONPath, { encoding: 'utf-8' })
     const parsedClient = JSON.parse(content)
+    // @ts-ignore
     const election = parsedClient.forEach((prop) => {
         if (prop.hasOwnProperty(`${clientName}`)) {
             return prop.clientName
@@ -23,7 +26,7 @@ function getClient(clientName: string): Client {
 export default async function getToken(client_name: string | number | ParserTypes[] | boolean, JWTFlag: boolean) {
     const { client_id, client_secret } = getClient(client_name)
 
-    const response = await fetch(env.issuer_url, {
+    const res: TokenResponse = await fetch(env.issuer_url, {
         method: "POST",
         body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`,
         headers: {
@@ -33,17 +36,9 @@ export default async function getToken(client_name: string | number | ParserType
     })
 
     if (JWTFlag) {
-        const response = await fetch(env.echo_url, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${}`,
-                "host":`${env.echo_url}`
-            },
-        })
-        console.log(response)
-
-        return response
+        if (res.body != null) {
+        const token: any = res.body.
+            return getJWT(token)
+        }
     }
-
-    return response.access_token
 }
