@@ -1,7 +1,7 @@
 {
   "name": "ts-tokeman",
   "version": "0.0.1",
-  "description": "token manager build in ts-node",
+  "description": "token manager built in ts-node",
   "author": "",
   "main": "index.js",
   "keywords": [],
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/jay-bulk/ts-tokeman.git"
   },
+  "type": "module",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf dist",
@@ -18,6 +19,7 @@
     "test": "ava"
   },
   "dependencies": {
+    "@caporal/core": "^2.0.2",
     "@oclif/core": "^2.8.5"
   },
   "devDependencies": {

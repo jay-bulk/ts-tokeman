@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 import { ux } from '@oclif/core'
-import {setEnv} from './util'
+import {setEnv} from './env'
 
 const env = setEnv()
 export async function writeConfigDir(): Promise<void> {

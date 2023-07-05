@@ -1,6 +1,8 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
     "declaration": true,
     "esModuleInterop": true,
     "outDir": "dist",
