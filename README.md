@@ -71,6 +71,7 @@
 
 
 ## About This Project
+> This repo represents pre-release work and should be used only experimentally at the moment as it is subject to instability and large amounts of refactoring. Use at your own risk.
 <br>
 
 ### Tech Stack
