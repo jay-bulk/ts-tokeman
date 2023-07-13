@@ -98,10 +98,9 @@ For help or guidance in downloading and running the application, see the followi
 cd ts-tokeman/
   npm i
   ```
-3. Start:
-  ```sh
-  npm run build
-  npm run start  
+3. Usage:
+  ```shell
+$ node ts-tokeman generate --token $client_id
   ```
 
 <br><hr><br>
