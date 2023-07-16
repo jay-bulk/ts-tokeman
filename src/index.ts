@@ -1,21 +1,15 @@
-import { program } from '@caporal/core'
+import yargs from 'yargs'
 import getToken from './util/tokens'
 
-program.name('Token generator').description('Generate tokens/jwts for designated client-ids/secrets')
+yargs = process.argv.slice(2)
+    .usage('Usage: $0 <command> [options')
+    .command('tokeman', 'Generate a token from default tokeman.json')
+    .alias('t', 'token')
+    .alias('j', 'jwt')
+    .nargs('t', 1)
+    .nargs('t', 1)
+    .describe('t', 'generate a token')
+    .demandOption('f')
+    .help('h')
+    .argv
 
-  .command('generate', 'Generate a token')
-  .argument('<token-name>', 'Token name')
-  .option('-j, --jwt', 'generate a jwt')
-  .action(({ logger, args, options }) => {
-    if (options.jwt) {
-      logger.info('Generating JWT...')
-      const JWT = getToken(args.tokenName, true)
-      logger.info('JWT: %s', JWT)
-    } else {
-      logger.info('Generating token for %s', args.tokenName)
-      const token = getToken(args.tokenName, false)
-      logger.info('Token: %s', token)
-    }
-  })
-
-program.run()
