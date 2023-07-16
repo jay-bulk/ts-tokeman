@@ -31,3 +31,11 @@ export class Environment {
         }
     }
 }
+
+export function setEnv () {
+    const env = new Environment()
+    // eslint-disable-next-line camelcase
+    const { issuer_url, gateway_url, config_dir, echo_url } = env.getEnv()
+    // eslint-disable-next-line camelcase
+    return { issuer_url, gateway_url, config_dir, echo_url }
+}

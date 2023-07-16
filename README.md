@@ -71,6 +71,7 @@
 
 
 ## About This Project
+> This repo represents pre-release work and should be used only experimentally at the moment as it is subject to instability and large amounts of refactoring. Use at your own risk.
 <br>
 
 ### Tech Stack
@@ -98,10 +99,9 @@ For help or guidance in downloading and running the application, see the followi
 cd ts-tokeman/
   npm i
   ```
-3. Start:
-  ```sh
-  npm run build
-  npm run start  
+3. Usage:
+  ```shell
+$ node ts-tokeman generate --token $client_id
   ```
 
 <br><hr><br>

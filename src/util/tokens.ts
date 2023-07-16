@@ -1,4 +1,4 @@
-import {setEnv} from './util'
+import {setEnv} from './env'
 import fetch from 'node-fetch'
 import path from "path";
 import fs from "fs";
@@ -37,7 +37,7 @@ export default async function getToken(client_name: string | number | ParserType
 
     if (JWTFlag) {
         if (res.body != null) {
-        const token: any = res.body.
+        const token: any = res.access_token
             return getJWT(token)
         }
     }

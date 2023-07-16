@@ -1,7 +1,8 @@
 import fs from "fs"
 import path from "path"
-import { ux } from '@oclif/core'
-import {setEnv} from './util'
+import {setEnv} from './env'
+import findUp from 'find-up'
+
 
 const env = setEnv()
 export async function writeConfigDir(): Promise<void> {
@@ -18,4 +19,13 @@ export async function writeConfigDir(): Promise<void> {
     } catch (e) {
         process.exit()
     }
+}
+
+export async function getConfig(): Promise<Object> {
+    const configPath = findUp.sync(['tokeman.json'])
+    const config = configPath ? JSON.parse(fs.readFileSync(configPath)) : {}
+    const argv = yargs.parse(process.argv.slice(2))
+        .config(config)
+        .argv
+
 }
