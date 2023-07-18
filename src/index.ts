@@ -1,15 +1,32 @@
-import yargs from 'yargs'
+import { type OptionValues } from 'commander'
+import { program } from '@commander-js/extra-typings'
 import getToken from './util/tokens'
+import getJWT from './util/jwt'
 
-yargs = process.argv.slice(2)
-    .usage('Usage: $0 <command> [options')
-    .command('tokeman', 'Generate a token from default tokeman.json')
-    .alias('t', 'token')
-    .alias('j', 'jwt')
-    .nargs('t', 1)
-    .nargs('t', 1)
-    .describe('t', 'generate a token')
-    .demandOption('f')
-    .help('h')
-    .argv
+program.command('Usage: $0 <command> [options]')
+  .option('-t, --token <client-id>', 'generate a token', 'default')
+  .option('-j, --jwt <access-token>', 'generate a jwt')
+  .option('-f, --file <file>', 'config file')
+  .showHelpAfterError()
 
+program.parse(process.argv)
+
+const opts: OptionValues = program.opts()
+async function checkOpts (): Promise<void> {
+  if (opts.token !== null) {
+    if (opts.jwt !== null) {
+      await getToken(opts.token, true)
+    }
+    await getToken(opts.token, false)
+  } if (opts.jwt !== null) {
+    await getJWT(opts.jwt)
+  } else {
+    program.error('No options specified')
+  }
+}
+
+checkOpts().catch(e => {
+  console.error(e)
+})
+
+// console.log(` Options: ${...opts}`)
