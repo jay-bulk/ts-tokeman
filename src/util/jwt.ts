@@ -1,22 +1,20 @@
 import { setEnv } from './env'
 import fetch from 'node-fetch'
-import {TokenResponse} from "./Response";
+import { type TokenResponse } from './Response'
 
-//May need to switch to fastify server is fetch cannot handle specifying data
+// May need to switch to fastify server is fetch cannot handle specifying data
 const env = setEnv()
-// @ts-ignore
-export default async function getJWT(token: any): Promise<TokenResponse> {
-
-    const response = await fetch(env.echo_url, {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "host":`${env.echo_url}`
-        },
+export default async function getJWT (token: string): Promise<TokenResponse> {
+  try {
+    return await fetch(env.echoUrl, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        host: `${env.echoUrl}`
+      }
     })
-    console.log(response)
-    if (response != null || response != undefined) {
-        // @ts-ignore
-        return response['x-jwt-assertion']
-    }
+  } catch (err) {
+    console.error(err)
+    return await Promise.reject(err)
+  }
 }

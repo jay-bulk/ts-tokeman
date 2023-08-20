@@ -1,21 +1,32 @@
-import { program } from '@caporal/core'
+import { type OptionValues } from 'commander'
+import { program } from '@commander-js/extra-typings'
 import getToken from './util/tokens'
+import getJWT from './util/jwt'
 
-program.name('Token generator').description('Generate tokens/jwts for designated client-ids/secrets')
+program.command('Usage: $0 <command> [options]')
+  .option('-t, --token <client-id>', 'generate a token', 'default')
+  .option('-j, --jwt <access-token>', 'generate a jwt')
+  .option('-f, --file <file>', 'config file')
+  .showHelpAfterError()
 
-  .command('generate', 'Generate a token')
-  .argument('<token-name>', 'Token name')
-  .option('-j, --jwt', 'generate a jwt')
-  .action(({ logger, args, options }) => {
-    if (options.jwt) {
-      logger.info('Generating JWT...')
-      const JWT = getToken(args.tokenName, true)
-      logger.info('JWT: %s', JWT)
-    } else {
-      logger.info('Generating token for %s', args.tokenName)
-      const token = getToken(args.tokenName, false)
-      logger.info('Token: %s', token)
+program.parse(process.argv)
+
+const opts: OptionValues = program.opts()
+async function checkOpts (): Promise<void> {
+  if (opts.token !== null) {
+    if (opts.jwt !== null) {
+      await getToken(opts.token, true)
     }
-  })
+    await getToken(opts.token, false)
+  } if (opts.jwt !== null) {
+    await getJWT(opts.jwt)
+  } else {
+    program.error('No options specified')
+  }
+}
 
-program.run()
+checkOpts().catch(e => {
+  console.error(e)
+})
+
+// console.log(` Options: ${...opts}`)

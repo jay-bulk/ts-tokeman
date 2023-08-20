@@ -1,21 +1,22 @@
+import TypeBox, {Type} from '@sinclair/typebox'
 export interface IClient {
-    client_id: string
-    client_secret: string
+  client_id: Type.String(),
+  client_secret: Type.String()
 }
 
 export class Client {
-    readonly client_id: string
-    readonly client_secret: string
+  readonly clientId: Type.String(),
+  readonly clientSecret: Type.String()
 
-    constructor( client_id: string, client_secret: string) {
-        this.client_id = client_id
-        this.client_secret = client_secret
+  constructor (clientId: string, clientSecret: string) {
+    this.clientId = clientId
+    this.clientSecret = clientSecret
+  }
+
+  getClient (): IClient {
+    return <IClient>{
+      client_id: this.clientId,
+      client_secret: this.clientSecret
     }
-    getClient (): IClient
-    {
-        return {
-            client_id: this.client_id,
-            client_secret: this.client_secret
-        }
-    }
+  }
 }
